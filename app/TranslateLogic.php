@@ -5,8 +5,6 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TranslateLogic {
 
-
-
     public function translate ($text)
     {
         $tr = new GoogleTranslate();
