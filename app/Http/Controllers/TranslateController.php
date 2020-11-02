@@ -9,11 +9,10 @@ class TranslateController extends Controller
 {
     private $translateRepository;
 
-    public function __construct (TranslateRepositoryInterface $translateRepository)
+    public function __construct (TranslateRepositoryInterface $translateRepository = null)
     {
         $this->translateRepository = $translateRepository;
     }
-
 
     public function translate (Request $request)
     {

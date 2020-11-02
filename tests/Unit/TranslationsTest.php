@@ -1,10 +1,15 @@
 <?php
 
 namespace Tests\Unit;
+use App\Http\Controllers\TranslateController;
+use App\Models\User;
+use App\Repositories\Interfaces\TranslateRepositoryInterface;
 use App\Repositories\TranslateRepository;
-use Illuminate\Filesystem\Cache;
+use Illuminate\Routing\Route;
 use Tests\TestCase;
-use App\TranslateLogic;
+use Illuminate\Http\Request;
+
+
 
 class TranslationsTest extends TestCase
 {
@@ -13,6 +18,14 @@ class TranslationsTest extends TestCase
      *
      * @return void
      */
+
+    protected $translateRepository;
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->translateRepository = $this->app->make('App\Repositories\TranslateRepository');
+
+    }
 
     public function testApiContent () {
         $response = $this->postJson('/api/translate',['text' => 'price'])->getContent();
@@ -24,10 +37,19 @@ class TranslationsTest extends TestCase
         $response->assertStatus(200);
     }
 
+//    public function testDbUser () {
+//        $this->assertDatabaseCount('users',5);
+//    }
+
     public function testRepository () {
-        $repository = new TranslateRepository();
-        $test_repo = $repository->translate('price');
+        $test_repo = $this->translateRepository->translate('price');
         $this->assertEquals('գինը', $test_repo);
     }
+
+    public function testTest () {
+        $user = User::factory()->create(['name' => 'ruben']);
+        $this->assertInstanceOf(User::class, $user);
+    }
+
 
 }

@@ -12,9 +12,9 @@ class TranslateRepository implements TranslateRepositoryInterface {
         $tr = new GoogleTranslate();
         $tr->setSource('en');
         $tr->setTarget('hy');
-
         return $tr->translate($text);
     }
+
 
 
 }
