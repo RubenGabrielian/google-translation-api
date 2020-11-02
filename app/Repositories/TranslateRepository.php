@@ -6,6 +6,7 @@ use App\Repositories\Interfaces\TranslateRepositoryInterface;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TranslateRepository implements TranslateRepositoryInterface {
+
     public function translate($text)
     {
         $tr = new GoogleTranslate();
@@ -14,4 +15,6 @@ class TranslateRepository implements TranslateRepositoryInterface {
 
         return $tr->translate($text);
     }
+
+
 }
