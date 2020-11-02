@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Interfaces\TranslateRepositoryInterface;
 use Illuminate\Http\Request;
 
 class TranslateController extends Controller
 {
-    protected $translateLogic;
+    private $translateRepository;
 
-    public function __construct(\TranslateLogic $translateLogic)
-    {
-        $this->translateLogic = $translateLogic;
+    public function __construct (TranslateRepositoryInterface $translateRepository) {
+        $this->translateRepository = $translateRepository;
     }
 
+
     public function translate (Request $request)  {
-        return $this->translateLogic->translate($request->text);
+        return $this->translateRepository->translate($request->text);
     }
 
 }
