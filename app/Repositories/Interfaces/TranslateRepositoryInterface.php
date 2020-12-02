@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
-interface TranslateRepositoryInterface {
+interface TranslateRepositoryInterface
+{
     public function translate ($text);
 }
